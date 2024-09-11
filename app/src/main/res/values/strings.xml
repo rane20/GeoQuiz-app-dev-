@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">GeoQuiz</string>
-    <string name="question_text">Canberra is the capital of Australia</string>
-    <string name="question_australia">Canberra is the capital of Australia</string>
-    <string name="question_oceans">The Pacific Ocean is larger than the Atlantic Ocean</string>
-    <string name="question_mideast">The Suez Canal connect the Red Sea and the Indian Ocean</string>
-    <string name="question_africa">The source of the Nile River is in Egypt</string>
-    <string name="question_americas">The Amazon River is the longest river in the Americas</string>
-    <string name="question_asia">Lake Baikal is the world\'s oldest and deepest freshwater lake</string>
+    <string name="question_text">The Hunger Games trilogy was written by Suzanne Collins</string>
+    <string name="question_sisters">Katniss has two sisters</string>
+    <string name="question_district">District 12\'s main industry was coal mining</string>
+    <string name="question_panem">Cane is the President of Panem</string>
+    <string name="question_thresh">Thresh does not kill Katniss because she was Rue\'s ally</string>
+    <string name="question_katniss">Katniss is named after a plant </string>
+    <string name="question_haymitch">Haymitch won the 49th annual Hunger Games</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="correct_toast">Correct!</string>

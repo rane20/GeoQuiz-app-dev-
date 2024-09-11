@@ -16,12 +16,13 @@ class QuizViewModel (private val savedStateHandle: SavedStateHandle): ViewModel(
         Log.d(TAG, "VIewModel instance about to be destroyed")
     }
     private val questionBank = listOf(
-        Question(R.string.question_australia, true),
-        Question(R.string.question_oceans, true),
-        Question(R.string.question_mideast, false),
-        Question(R.string.question_africa, false),
-        Question(R.string.question_americas, true),
-        Question(R.string.question_asia, true)
+        Question(R.string.question_text, true),
+        Question(R.string.question_sisters, false),
+        Question(R.string.question_district, true),
+        Question(R.string.question_panem, false),
+        Question(R.string.question_thresh, true),
+        Question(R.string.question_katniss, true),
+        Question(R.string.question_haymitch, false)
 
     )
     var isCheater: Boolean
@@ -32,6 +33,7 @@ class QuizViewModel (private val savedStateHandle: SavedStateHandle): ViewModel(
         get() = savedStateHandle.get(CURRENT_INDEX_KEY) ?:0
         set(value) = savedStateHandle.set(CURRENT_INDEX_KEY, value)
 
+    private val answeredQuestions = BooleanArray(questionBank.size)
     val currentQuestionAnswer: Boolean
         get() = questionBank[currentIndex].answer
 
@@ -41,11 +43,20 @@ class QuizViewModel (private val savedStateHandle: SavedStateHandle): ViewModel(
     val currentQuestionText: Int
         get() = questionBank[currentIndex].textResId
 
+
     fun moveToNext(){
         currentIndex = (currentIndex + 1) % questionBank.size
     }
     fun moveToPrev(){
         currentIndex = (currentIndex - 1 + questionBank.size) % questionBank.size
+    }
+
+    fun disableAnswer() {
+        answeredQuestions[currentIndex] = true
+    }
+
+    fun isAnswerDisabled(): Boolean {
+        return answeredQuestions[currentIndex]
     }
     fun getQuestionBank() = questionBank
 

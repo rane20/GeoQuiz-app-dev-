@@ -48,16 +48,17 @@ class MainActivity : AppCompatActivity() {
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
 
-        // Replace Toast with Snackbar
 
         binding.trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
+            quizViewModel.disableAnswer()
             disableAnswerButtons()
             checkIfQuizCompleted()
         }
 
         binding.falseButton.setOnClickListener { view: View ->
             checkAnswer(false)
+            quizViewModel.disableAnswer()
             disableAnswerButtons()
             checkIfQuizCompleted()
         }
@@ -103,6 +104,13 @@ class MainActivity : AppCompatActivity() {
         val questionTextResId = quizViewModel.currentQuestionText
         binding.questionTextView.setText(questionTextResId)
         enableAnswerButtons()
+
+        // Update the state of the answer buttons based on whether answers are disabled
+        if (quizViewModel.isAnswerDisabled()) {
+            disableAnswerButtons()
+        } else {
+            enableAnswerButtons()
+        }
     }
     private fun disableAnswerButtons() {
         binding.trueButton.isEnabled = false
@@ -125,14 +133,14 @@ class MainActivity : AppCompatActivity() {
 
         Snackbar.make(
             binding.root,  // Use the root view of your layout
-            messageResId,  // The message to display
+            messageResId,  // message
             Snackbar.LENGTH_SHORT // Duration of the Snackbar
         ).show()
 
     }
 
     private fun checkIfQuizCompleted() {
-        if (quizViewModel.ifCompleted) { // Use the computed property from ViewModel
+        if (quizViewModel.ifCompleted) {
             displayScore()
         }
     }
